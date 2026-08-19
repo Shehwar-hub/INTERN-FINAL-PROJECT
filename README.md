@@ -272,8 +272,8 @@ JobLens/
 │       └── top_departments.csv
 │
 ├── models/
-│   ├── job_department_model.pkl
-│   └── tfidf_vectorizer.pkl
+│   ├── job_catgory_model.pkl
+│   └── job_catgory_vectorizer.pkl
 │
 ├── app.py
 ├── data_cleaning.py
