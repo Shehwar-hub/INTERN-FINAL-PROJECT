@@ -45,7 +45,7 @@ JobLens addresses this problem by processing Pakistani job-market data and provi
 ![Job Explorer](screenshots/job_explorer.png)
 
 ## Project Demo
-![Watch JobLens Working Demo](screenshots/dashboard.png)(https://youtu.be/i0PbfDPpd0M)
+[![Watch JobLens Working Demo](screenshots/dashboard.png)](https://youtu.be/i0PbfDPpd0M)
 
 ## Dataset
 
