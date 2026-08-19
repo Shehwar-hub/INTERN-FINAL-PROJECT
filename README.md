@@ -29,6 +29,24 @@ JobLens addresses this problem by processing Pakistani job-market data and provi
 9. Provide an ML-based job department classification feature.
 10. Present results through an interactive Streamlit dashboard.
 
+
+## Project Screenshots
+
+### Dashboard
+![JobLens Dashboard](screenshots/dashboard.png)
+
+### Skill Gap Analyzer
+![Skill Gap Analyzer](screenshots/skill_gap.png)
+
+### ML Job Category Predictor
+![ML Job Category Predictor](screenshots/ml_predictor.png)
+
+### Job Explorer
+![Job Explorer](screenshots/job_explorer.png)
+
+## Project Demo
+[Watch JobLens Working Demo](screenshots\Video Project.mp4)
+
 ## Dataset
 
 The project uses a Pakistani job-market dataset containing:
