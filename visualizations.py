@@ -2,10 +2,7 @@ import pandas as pd
 import ast
 import plotly.express as px
 
-
-# ==========================================
 # LOAD DATA
-# ==========================================
 
 df = pd.read_csv("data/jobs_with_skills.csv")
 
@@ -18,10 +15,7 @@ df["Extracted Skills"] = df["Extracted Skills"].apply(
     lambda x: ast.literal_eval(x) if isinstance(x, str) else []
 )
 
-
-# ==========================================
 # NORMALIZE DATA
-# ==========================================
 
 df["Department"] = (
     df["Department"]
@@ -36,11 +30,6 @@ df["Job Type"] = (
     .str.replace(r"\s+Jobs?$", "", regex=True)
     .str.strip()
 )
-
-
-# ==========================================
-# 1. TOP SKILLS
-# ==========================================
 
 skill_counts = {}
 
@@ -74,11 +63,6 @@ fig1 = px.bar(
 
 fig1.show()
 
-
-# ==========================================
-# 2. JOBS BY CITY
-# ==========================================
-
 city_df = (
     df["City"]
     .value_counts()
@@ -96,11 +80,6 @@ fig2 = px.bar(
 )
 
 fig2.show()
-
-
-# ==========================================
-# 3. EXPERIENCE DISTRIBUTION
-# ==========================================
 
 experience_df = (
     df["Experience Category"]
@@ -121,11 +100,6 @@ fig3 = px.pie(
 )
 
 fig3.show()
-
-
-# ==========================================
-# 4. DEPARTMENT DISTRIBUTION
-# ==========================================
 
 department_df = (
     df["Department"]
@@ -148,11 +122,6 @@ fig4 = px.bar(
 )
 
 fig4.show()
-
-
-# ==========================================
-# 5. MONTHLY JOB TREND
-# ==========================================
 
 df["Month"] = (
     df["Date Posted"]
@@ -181,11 +150,6 @@ fig5 = px.line(
 )
 
 fig5.show()
-
-
-# ==========================================
-# 6. JOB TYPE
-# ==========================================
 
 jobtype_df = (
     df["Job Type"]
