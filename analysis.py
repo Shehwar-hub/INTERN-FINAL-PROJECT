@@ -1,10 +1,7 @@
 import pandas as pd
 import ast
 
-
-# ==========================================
 # 1. LOAD DATA
-# ==========================================
 
 df = pd.read_csv("data/jobs_with_skills.csv")
 
@@ -16,18 +13,13 @@ df["Date Posted"] = pd.to_datetime(
 
 print("Dataset Loaded:", df.shape)
 
-# ==========================================
 # 2. CONVERT EXTRACTED SKILLS BACK TO LIST
-# ==========================================
 
 df["Extracted Skills"] = df["Extracted Skills"].apply(
     lambda x: ast.literal_eval(x) if isinstance(x, str) else []
 )
 
-
-# ==========================================
 # 3. BASIC KPIs
-# ==========================================
 
 total_jobs = len(df)
 
@@ -47,10 +39,7 @@ print("Total Companies:", total_companies)
 print("Total Cities:", total_cities)
 print("Total Departments:", total_departments)
 
-
-# ==========================================
 # 4. TOP JOB ROLES
-# ==========================================
 
 top_jobs = (
     df["Job Name"]
@@ -64,10 +53,7 @@ print("=" * 60)
 
 print(top_jobs)
 
-
-# ==========================================
 # 5. TOP CITIES
-# ==========================================
 
 top_cities = (
     df["City"]
@@ -81,13 +67,7 @@ print("=" * 60)
 
 print(top_cities)
 
-
-# ==========================================
 # 6. TOP DEPARTMENTS
-# ==========================================
-# ==========================================
-# NORMALIZE DEPARTMENTS
-# ==========================================
 
 df["Department"] = (
     df["Department"]
@@ -117,13 +97,7 @@ print("=" * 60)
 
 print(top_departments)
 
-
-# ==========================================
 # 7. JOB TYPE DISTRIBUTION
-# ==========================================
-# ==========================================
-# NORMALIZE JOB TYPES
-# ==========================================
 
 df["Job Type"] = (
     df["Job Type"]
@@ -142,10 +116,7 @@ print("=" * 60)
 
 print(job_types)
 
-
-# ==========================================
 # 8. EXPERIENCE DISTRIBUTION
-# ==========================================
 
 experience = (
     df["Experience Category"]
@@ -158,10 +129,7 @@ print("=" * 60)
 
 print(experience)
 
-
-# ==========================================
 # 9. TOP COMPANIES
-# ==========================================
 
 top_companies = (
     df["Company Name"]
@@ -238,10 +206,7 @@ print("=" * 60)
 
 print(monthly_jobs)
 
-
-# ==========================================
 # 12. SAVE ANALYTICS DATA
-# ==========================================
 
 top_cities.to_csv(
     "data/top_cities.csv"
