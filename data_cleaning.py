@@ -1,18 +1,12 @@
 import pandas as pd
 
-
-# ==========================================
 # 1. LOAD DATASET
-# ==========================================
 
 df = pd.read_csv("data/Pakistan_Jobs.csv")
 
 print("Original Shape:", df.shape)
 
-
-# ==========================================
 # 2. REMOVE DUPLICATES
-# ==========================================
 
 duplicates = df.duplicated().sum()
 
@@ -20,21 +14,13 @@ print("Duplicated rows:", duplicates)
 
 df = df.drop_duplicates().copy()
 
-
-# ==========================================
 # 3. HANDLE MISSING VALUES
-# ==========================================
 
 df["Company Name"] = df["Company Name"].fillna("Unknown Company")
 
-
-# label is not required for our project
 df = df.drop(columns=["label"])
 
-
-# ==========================================
 # 4. CLEAN TEXT COLUMNS
-# ==========================================
 
 text_columns = [
     "Job Name",
@@ -53,10 +39,7 @@ for column in text_columns:
         .str.strip()
     )
 
-
-# ==========================================
 # 5. CONVERT DATE
-# ==========================================
 
 df["Date Posted"] = pd.to_datetime(
     df["Date Posted"],
@@ -64,10 +47,7 @@ df["Date Posted"] = pd.to_datetime(
     errors="coerce"
 )
 
-
-# ==========================================
 # 6. EXPERIENCE PROCESSING
-# ==========================================
 
 def extract_min_experience(value):
 
@@ -115,10 +95,7 @@ df["Max Experience"] = df["Experience Required"].apply(
     extract_max_experience
 )
 
-
-# ==========================================
 # 7. EXPERIENCE CATEGORY
-# ==========================================
 
 def categorize_experience(value):
 
@@ -140,10 +117,7 @@ df["Experience Category"] = df["Experience Required"].apply(
     categorize_experience
 )
 
-
-# ==========================================
 # 8. CHECK EXPERIENCE
-# ==========================================
 
 print("\nExperience Analysis:")
 
@@ -165,10 +139,7 @@ print(
     df["Experience Category"].value_counts()
 )
 
-
-# ==========================================
 # 9. FINAL DATASET CHECK
-# ==========================================
 
 print("\nCleaned Shape:", df.shape)
 
@@ -180,10 +151,7 @@ print("\nData Types:")
 
 print(df.dtypes)
 
-
-# ==========================================
 # 10. SAVE CLEAN DATASET
-# ==========================================
 
 df.to_csv(
     "data/cleaned_jobs.csv",
