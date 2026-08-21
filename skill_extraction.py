@@ -1,19 +1,13 @@
 import pandas as pd
 import re
 
-
-# ==========================================
 # 1. LOAD CLEANED DATA
-# ==========================================
 
 df = pd.read_csv("data/cleaned_jobs.csv")
 
 print("Dataset Loaded:", df.shape)
 
-
-# ==========================================
 # 2. SKILL DICTIONARY
-# ==========================================
 
 SKILLS = [
     # Programming Languages
@@ -138,11 +132,6 @@ SKILLS = [
 "Figma",
 ]
 
-
-# ==========================================
-# 3. SKILL EXTRACTION FUNCTION
-# ==========================================
-
 def extract_skills(text):
 
     if pd.isna(text):
@@ -166,9 +155,6 @@ def extract_skills(text):
             found_skills.append(skill)
 
     return found_skills
-# ==========================================
-# 4. EXTRACT SKILLS
-# ==========================================
 
 df["Search Text"] = (
     df["Job Name"].fillna("") + " " +
@@ -202,11 +188,6 @@ for i in range(10):
 
     print("-" * 60)
 
-
-# ==========================================
-# 6. COUNT SKILL DEMAND
-# ==========================================
-
 skill_counts = {}
 
 for skills in df["Extracted Skills"]:
@@ -237,11 +218,6 @@ skill_demand = skill_demand.sort_values(
     ascending=False
 )
 
-
-# ==========================================
-# 7. DISPLAY TOP SKILLS
-# ==========================================
-
 print("\n" + "=" * 60)
 print("TOP 20 IN-DEMAND SKILLS")
 print("=" * 60)
@@ -249,11 +225,6 @@ print("=" * 60)
 print(
     skill_demand.head(20).to_string(index=False)
 )
-
-
-# ==========================================
-# 8. SAVE RESULTS
-# ==========================================
 
 df.to_csv(
     "data/jobs_with_skills.csv",
@@ -264,7 +235,6 @@ skill_demand.to_csv(
     "data/skill_demand.csv",
     index=False
 )
-
 
 print("\n" + "=" * 60)
 print("SKILL EXTRACTION COMPLETED")
